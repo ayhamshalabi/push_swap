@@ -1,29 +1,43 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct s_list
+typedef enum e_op
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+	TOTAL_OPS
+}	t_op;
+
+typedef enum e_strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}	t_strategy;
+
+typedef struct s_node
 {
 	int				value;
-	struct s_list	*next;
-} t_list;
+	int				rank;
+	struct s_node	*next;
+} t_node;
 
 typedef struct s_ps
 {
-    t_list      *a;
-    t_list      *b;
+    t_node      *a;
+    t_node      *b;
     int         bench;
     double      disorder;
-    char        *strategy_str;
-    int         total_ops;
-    int         cnt_sa;
-    int         cnt_sb;
-    int         cnt_ss;
-    int         cnt_pa;
-    int         cnt_pb;
-    int         cnt_ra;
-    int         cnt_rb;
-    int         cnt_rr;
-    int         cnt_rra;
-    int         cnt_rrb;
-    int         cnt_rrr;
+	t_strategy	strategy;
+    int         count[TOTAL_OPS];
 }   t_ps;
