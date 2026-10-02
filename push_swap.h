@@ -30,7 +30,7 @@ typedef struct s_node
 	int				value;
 	int				rank;
 	struct s_node	*next;
-} t_node;
+}	t_node;
 
 typedef struct s_ps
 {
@@ -40,4 +40,4 @@ typedef struct s_ps
     double      disorder;
 	t_strategy	strategy;
     int         count[TOTAL_OPS];
-}   t_ps;
+}	t_ps;
