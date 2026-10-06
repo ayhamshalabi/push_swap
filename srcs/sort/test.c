@@ -1,18 +1,16 @@
 #include "push_swap.h"
 
-static int	grt_rank_pos(t_node *stack, int target)
+static int	get_rank_pos(t_node *stack, int target)
 {
 	int	pos;
 
-	pos= 0;
-	while (stack)
+	pos = 0;
+	while (stack && stack->rank != target)
 	{
-		if (stack->rank == target)
-			return (pos);
 		pos++;
 		stack = stack->next;
 	}
-	return (-1);
+	return (pos);
 }
 
 static void	push_min_to_b(t_ps *ps, int target)
@@ -33,7 +31,6 @@ static void	push_min_to_b(t_ps *ps, int target)
 			op_reverse(ps, 'a');
 	}
 	op_push(ps, 'b');
-
 }
 
 void	sort_simple(t_ps *ps)
@@ -41,12 +38,13 @@ void	sort_simple(t_ps *ps)
 	int	target;
 
 	target = 0;
-	while (stack_stack(ps->a) > 3)
+	while (stack_size(ps->a) > 2)
 	{
 		push_min_to_b(ps, target);
 		target++;
 	}
-	sort_three(ps->a);
+	if (ps->a->rank > ps->a->next->rank)
+		op_swap(ps, 'a');
 	while (ps->b)
 		op_push(ps, 'a');
 }
