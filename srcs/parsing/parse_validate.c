@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hal-omar <hal-omar@student.42.tech>        +#+  +:+       +#+        */
+/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/02 20:56:10 by hal-omar          #+#    #+#             */
-/*   Updated: 2026/10/02 22:09:31 by hal-omar         ###   ########.fr       */
+/*   Created: 2026/10/02 20:56:10 by ayhshala          #+#    #+#             */
+/*   Updated: 2026/10/05 17:00:31 by ayhshala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include "push_swap.h"
-/* Checks that str is not empty and contains only digits with an optional sign */
 int	is_valid_syntax(char *str)
 {
 	int	i;
+
 	i = 0;
-	if (!str || !str[0])
+	if (!str)
 		return (0);
 	if (str[i] == '+' || str[i] == '-')
 		i++;
@@ -32,14 +31,26 @@ int	is_valid_syntax(char *str)
 	}
 	return (1);
 }
-/* Converts string to long and flags *err = 1 if it overflows 32-bit int */
-long	parse_atol(const char *str, int *err)
+
+int	is_duplicate(t_node *stack, int val)
 {
-	int		sign;
+	while (stack)
+	{
+		if (stack->value == val)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
+long	parse_atol(char *str, int *err)
+{
 	long	res;
+	int		sign;
 	int		i;
-	sign = 1;
+
 	res = 0;
+	sign = 1;
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -59,15 +70,4 @@ long	parse_atol(const char *str, int *err)
 		i++;
 	}
 	return (res * sign);
-}
-/* Returns 1 if val already exists in stack, 0 otherwise */
-int	is_duplicate(t_node *stack, int val)
-{
-	while (stack)
-	{
-		if (stack->value == val)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
 }
