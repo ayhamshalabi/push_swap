@@ -6,7 +6,7 @@
 /*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 21:34:08 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/06 13:08:48 by ayhshala         ###   ########.fr       */
+/*   Updated: 2026/10/04 22:05:55 by ayhshala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,27 @@ int	stack_size(t_node *stack)
 	return (size);
 }
 
-void	assign_ranks(t_node *stack)
+/*
+Normalizes every node's value to its sorted rank (0 to size - 1)
+void	normalize_ranks(t_node *stack)
 {
 	t_node	*curr;
 	t_node	*compare;
-	int		rank;
+	int		count;
 
 	curr = stack;
 	while (curr)
 	{
-		rank = 0;
+		count = 0;
 		compare = stack;
 		while (compare)
 		{
 			if (compare->value < curr->value)
-				rank++;
+				count++;
 			compare = compare->next;
 		}
-		curr->rank = rank;
+		curr->rank = count;
 		curr = curr->next;
 	}
 }
+*/
