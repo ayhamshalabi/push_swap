@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/02 20:56:18 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/04 22:04:38 by ayhshala         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Iterates CLI arguments, routes flags or number tokens, and validates that stack A is not empty */
 void	parse_args(t_ps *ps, int num, char **arg)
 {
 	int	i;

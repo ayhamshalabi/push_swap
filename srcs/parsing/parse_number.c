@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_number.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/02 20:56:25 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/05 17:00:21 by ayhshala         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Frees a null-terminated array of strings allocated by ft_split */
 static void	free_split(char **res)
 {
 	int	i;
@@ -24,6 +13,7 @@ static void	free_split(char **res)
 	free(res);
 }
 
+/* Validates, converts, and checks duplicate for a token before appending to stack A */
 static void	add_number(char *str, char **res, t_ps *ps)
 {
 	int		err;
@@ -51,6 +41,7 @@ static void	add_number(char *str, char **res, t_ps *ps)
 	stack_add_bottom(&ps->a, node);
 }
 
+/* Splits an argument string by spaces and passes each numeric token to add_number */
 void	parse_number(char *arg, t_ps *ps)
 {
 	char	**res;

@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/02 20:56:07 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/05 16:58:42 by ayhshala         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Frees both stacks, writes "Error\n" to stderr, and terminates the program with failure */
 void	error(t_ps *ps)
 {
 	if (ps)

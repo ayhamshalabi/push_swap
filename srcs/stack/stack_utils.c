@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/03 21:34:08 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/04 22:05:55 by ayhshala         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Allocates and initializes a new stack node with the given integer value */
 t_node	*new_node(int value)
 {
 	t_node	*node;
@@ -25,6 +14,7 @@ t_node	*new_node(int value)
 	return (node);
 }
 
+/* Appends a node to the bottom (tail) of the stack */
 void	stack_add_bottom(t_node **stack, t_node *node)
 {
 	t_node	*tmp;
@@ -42,6 +32,7 @@ void	stack_add_bottom(t_node **stack, t_node *node)
 	tmp->next = node;
 }
 
+/* Deallocates every node in the stack and sets the stack head pointer to NULL */
 void	free_stack(t_node **stack)
 {
 	t_node	*tmp;
@@ -56,6 +47,7 @@ void	free_stack(t_node **stack)
 	}
 }
 
+/* Counts and returns the total number of nodes in the stack */
 int	stack_size(t_node *stack)
 {
 	int	size;
@@ -69,9 +61,8 @@ int	stack_size(t_node *stack)
 	return (size);
 }
 
-/*
-Normalizes every node's value to its sorted rank (0 to size - 1)
-void	normalize_ranks(t_node *stack)
+/* Normalizes node values into 0-indexed ranks based on relative order */
+void	initialize_ranks(t_node *stack)
 {
 	t_node	*curr;
 	t_node	*compare;
@@ -92,4 +83,3 @@ void	normalize_ranks(t_node *stack)
 		curr = curr->next;
 	}
 }
-*/

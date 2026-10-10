@@ -1,30 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hal-omar <hal-omar@student.42.tech>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/03 15:27:05 by hal-omar          #+#    #+#             */
-/*   Updated: 2026/10/03 21:27:25 by hal-omar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	stack_size(t_node *stack)
-{
-	int	size;
-
-	size = 0;
-	while (stack)
-	{
-		size++;
-		stack = stack->next;
-	}
-	return (size);
-}
-
+/* Computes the ratio of inverted pairs over total pairs (disorder score between 0.0 and 1.0) */
 double	compute_disorder(t_node *stack)
 {
 	t_node	*i;

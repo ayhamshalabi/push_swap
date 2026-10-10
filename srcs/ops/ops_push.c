@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ops_push.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hal-omar <hal-omar@student.42.tech>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/30 19:05:50 by hal-omar          #+#    #+#             */
-/*   Updated: 2026/10/06 13:49:55 by hal-omar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Increments push operation statistics and prints pa or pb */
 static void	op_print(t_ps *ps, char op)
 {
 	if (op == 'a')
@@ -26,6 +15,7 @@ static void	op_print(t_ps *ps, char op)
 	}
 }
 
+/* Moves the top element from the source stack to the top of the destination stack */
 static void	push(t_node **from_stack, t_node **to_stack)
 {
 	t_node	*tmp;
@@ -36,13 +26,7 @@ static void	push(t_node **from_stack, t_node **to_stack)
 	*to_stack = tmp;
 }
 
-/*
-code logic:
-op = a: prints "pa\n" only if stack_b had >= 1 nods.
-op = b: prints "pb\n" only if stack_a had >= 1 nods.
-op = random: does not print any thing;
-*/
-
+/* Executes push onto stack A (pa) or stack B (pb) */
 void	op_push(t_ps *ps, char op)
 {
 	if (op == 'a' && ps->b)

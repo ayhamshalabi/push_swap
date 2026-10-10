@@ -1,85 +1,81 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hal-omar <hal-omar@learner.42.tech>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/16 00:07:16 by hal-omar          #+#    #+#             */
-/*   Updated: 2026/09/16 00:07:18 by hal-omar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
+/* Counts the number of delimiter-separated words in string s */
 static size_t	word_count(char const *s, char c)
 {
 	size_t	count;
-	size_t	i;
 
 	count = 0;
-	i = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-		{
+		while (*s == c)
+			s++;
+		if (*s)
 			count++;
-			while (s[i] != '\0' && s[i] != c)
-				i++;
-		}
+		while (*s && *s != c)
+			s++;
 	}
 	return (count);
 }
 
-static void	free_split(char **res, size_t word_i)
+/* Calculates the length of the next word up to delimiter c */
+static size_t	word_len(char const *s, char c)
 {
-	size_t	j;
+	size_t	len;
 
-	j = 0;
-	while (j < word_i)
-	{
-		free(res[j]);
-		j++;
-	}
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+/* Frees an array of allocated word strings up to index i */
+static void	free_res(char **res, int i)
+{
+	while (i--)
+		free(res[i]);
 	free(res);
 }
 
-static void	find_word(char const *s, char c, size_t *i, size_t *start)
+/* Allocates and copies each delimited word into the result array */
+static int	fill_res(char **res, char const *s, char c)
 {
-	while (s[*i] == c)
-		(*i)++;
-	*start = *i;
-	while (s[*i] != '\0' && s[*i] != c)
-		(*i)++;
+	int		i;
+	size_t	len;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (!*s)
+			break ;
+		len = word_len(s, c);
+		res[i] = malloc(len + 1);
+		if (!res[i])
+		{
+			free_res(res, i);
+			return (0);
+		}
+		ft_strlcpy(res[i], s, len + 1);
+		i++;
+		s += len;
+	}
+	res[i] = NULL;
+	return (1);
 }
 
+/* Splits string s by character c into a null-terminated array of strings */
 char	**ft_split(char const *s, char c)
 {
-	size_t	nword;
-	size_t	i;
-	size_t	start;
-	size_t	word_i;
 	char	**res;
 
-	nword = word_count(s, c);
-	res = malloc((nword + 1) * sizeof(char *));
-	if (res == NULL)
+	if (!s)
 		return (NULL);
-	i = 0;
-	word_i = 0;
-	while (word_i < nword)
-	{
-		find_word(s, c, &i, &start);
-		res[word_i] = ft_substr(s, start, i - start);
-		if (!res[word_i])
-		{
-			free_split(res, word_i);
-			return (NULL);
-		}
-		word_i++;
-	}
-	res[nword] = NULL;
+	res = malloc(sizeof(char *) * (word_count(s, c) + 1));
+	if (!res)
+		return (NULL);
+	if (!fill_res(res, s, c))
+		return (NULL);
 	return (res);
 }

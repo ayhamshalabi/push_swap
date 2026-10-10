@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_validate.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ayhshala <ayham.shalabi@learner.42.tech    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/02 20:56:10 by ayhshala          #+#    #+#             */
-/*   Updated: 2026/10/05 17:00:31 by ayhshala         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
+/* Checks if a string contains only an optional sign followed by digits */
 int	is_valid_syntax(char *str)
 {
 	int	i;
@@ -32,6 +21,7 @@ int	is_valid_syntax(char *str)
 	return (1);
 }
 
+/* Checks if an integer value already exists in the stack */
 int	is_duplicate(t_node *stack, int val)
 {
 	while (stack)
@@ -43,6 +33,7 @@ int	is_duplicate(t_node *stack, int val)
 	return (0);
 }
 
+/* Converts a string to long and flags an error on 32-bit integer overflow */
 long	parse_atol(char *str, int *err)
 {
 	long	res;

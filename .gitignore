@@ -1,0 +1,21 @@
+# Binaries
+push_swap
+*.out
+*.exe
+
+# Object files and static libraries
+*.o
+*.a
+
+# Logs and diagnostic artifacts
+*.log
+bench.log
+telemetry.log
+
+# OS and Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
