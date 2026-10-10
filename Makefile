@@ -33,23 +33,23 @@ $(NAME): $(LIBFT) $(PRINTF) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-	make -C libft
+	$(MAKE) -C libft
 
 $(PRINTF):
-	make -C ft_printf
+	$(MAKE) -C ft_printf
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
-	make -C libft clean
-	make -C ft_printf clean
+	$(MAKE) -C libft clean
+	$(MAKE) -C ft_printf clean
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C libft fclean
-	make -C ft_printf fclean
+	$(MAKE) -C libft fclean
+	$(MAKE) -C ft_printf fclean
 
 re: fclean all
 

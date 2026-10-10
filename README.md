@@ -1,5 +1,10 @@
 # Push Swap: Adaptive Dual-Stack Sorting Engine
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Language: C](https://img.shields.io/badge/Language-C-00599C.svg?logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Memory: Valgrind Clean](https://img.shields.io/badge/Valgrind-0%20Leaks-brightgreen.svg)](#input-validation--memory-safety)
+[![Platform: Linux | macOS](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey.svg)](#build-system--cli-usage)
+
 > An algorithmic optimization engine implemented in C that sorts arbitrary integer permutations on constrained dual pushdown automata using minimal instruction sequences.
 
 *Engineered and developed in collaboration by **[Ayham Shalabi](https://github.com/ayhamshalabi)** and **[Huthifa Alomari](https://github.com/Huthifa-Alomari)**.*
@@ -26,6 +31,7 @@
 12. [Verification & Test Workflows](#verification--test-workflows)
 13. [Collaboration & Attribution](#collaboration--attribution)
 14. [References & Further Reading](#references--further-reading)
+15. [License](#license)
 
 ---
 
@@ -484,3 +490,9 @@ This engine was architected, implemented, and benchmarked collaboratively by **[
 * Wikipedia: [Big-O Asymptotic Notation](https://en.wikipedia.org/wiki/Big_O_notation)
 * [Valgrind Profiling Suite Documentation](https://valgrind.org/docs/manual/manual.html)
 * [GNU Make Reference Manual](https://www.gnu.org/software/make/manual/make.html)
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
